@@ -1,11 +1,23 @@
 class Clock extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
+    this.launchClock()
     this.state = {
       currentTime: (new Date()).toLocaleString()
     }
   }
+  launchClock() {
+    setInterval(()=> {
+      console.log('Updating...')
+      this.setState({currentTime: (new Date()).toLocaleString()})
+    }, 1000)
+  }
   render() {
-    return <div>{ this.state.currentTime }</div>
+    console.log('Rendering...')
+    return (
+    <div>
+      <DigitalDisplay time={this.state.currentTime}/>
+    </div>
+    )
   }
 }
